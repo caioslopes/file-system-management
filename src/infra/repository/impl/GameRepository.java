@@ -19,8 +19,7 @@ public class GameRepository implements IRepository<Game, Long> {
 
     @Override
     public Game find(Long identifier) {
-        String content = fileManagement.read();
-        System.out.println(content);
+        //TO-DO
         return null;
     }
 }

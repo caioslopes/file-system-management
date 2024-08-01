@@ -1,7 +1,9 @@
 package domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Game {
@@ -20,6 +22,8 @@ public class Game {
         this.publisher = string[2];
         this.release = LocalDateTime.parse(string[3]);
         this.synopsis = string[4];
+        this.requirement = new HashMap<>();
+        this.platform = new ArrayList<>();
     }
 
     public Game(Long id, String title, String publisher, LocalDateTime release, String synopsis, Map<String, String> requirement, Collection<String> platform) {

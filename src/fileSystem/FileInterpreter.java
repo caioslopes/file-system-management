@@ -7,41 +7,24 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class FileInterpreter<T>{
 
-    public Collection<T> interpret(String content, T dto) throws ClassNotFoundException {
-        Class<?> clazz = (Class<?>) dto.getClass();
+    public Collection<String[]> interpret(String content, Class<T> dto) {
+        int attributes = dto.getDeclaredFields().length;
 
-        Collection<T> dataset = new ArrayList<>();
+        Collection<String[]> result = new ArrayList<>();
 
-        int attributes = clazz.getDeclaredFields().length;
-
-        //Criar interface bolada slc vey mds cade
-
-        String lines[] = content.split("\\n");
+        String[] lines = content.split("\\n");
         for (String line : lines) {
-            String tuples[] = line.split(";");
-            if(tuples.length == 5){
-                int i = 0;
-                for(Field f : clazz.getDeclaredFields()){
-
-//                    Class att = Class.forName(f.getType().getName());
-                    var att = tuples[i];
-                    i++;
-                }
-//                dataset.add();
+            String[] tuples = line.split(";");
+            if(tuples.length == attributes){
+                result.add(tuples);
             }
-
-//            System.out.println(line);
         }
 
-//        for(Field f : clazz.getDeclaredFields()){
-//            System.out.println(f.getName()+", ");
-//            System.out.println(f.getType()+", ");
-//        }
-
-        return null;
+        return result;
     }
 
 }
