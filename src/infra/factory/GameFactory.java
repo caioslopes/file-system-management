@@ -13,10 +13,13 @@ public class GameFactory implements Factory<Game> {
         return new Game(args);
     }
 
+    @Override
     public Collection<Game> all(Collection<String[]> dataset){
         Collection<Game> games = new ArrayList<>();
         dataset.forEach( data -> games.add(generate(data)));
         return games;
     }
+
+
 
 }
