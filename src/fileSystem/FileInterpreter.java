@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public class FileInterpreter<T>{
+public class FileInterpreter{
 
-    public Collection<String[]> interpret(String content, Class<T> dto) {
+    public Collection<String[]> interpret(String content, Class<?> dto) {
         int attributes = dto.getDeclaredFields().length;
 
         Collection<String[]> result = new ArrayList<>();

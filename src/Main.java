@@ -3,8 +3,8 @@ import domain.User;
 import dto.GameDto;
 import fileSystem.FileInterpreter;
 import fileSystem.FileManagement;
-import infra.factory.GameFactory;
-import infra.factory.UserFactory;
+import infra.fileConverse.GameFileConverse;
+import infra.fileConverse.UserFileConverse;
 import infra.repository.impl.GameRepository;
 import infra.repository.impl.UserRepository;
 
@@ -24,18 +24,11 @@ public class Main {
 
         GameRepository gameRepository = new GameRepository();
 
-        gameRepository.save(game1);
-        gameRepository.save(game2);
-        gameRepository.save(game3);
-        gameRepository.save(game4);
+//        gameRepository.save(game1);
+//        gameRepository.save(game2);
+//        gameRepository.save(game3);
+//        gameRepository.save(game4);
 
-        FileManagement gameFile = new FileManagement("./csv/game.csv");
-        FileInterpreter<GameDto> fi = new FileInterpreter<>();
-        GameFactory gameFactory = new GameFactory();
-
-        Collection<Game> games = gameFactory.all(fi.interpret(gameFile.read(), GameDto.class));
-
-        games.forEach(System.out::println);
 
         User user1 = new User(11L, "Caio", "caio@gmail.com", "123");
         User user2 = new User(12L, "Augusto", "augusto@gmail.com", "123");
@@ -44,19 +37,15 @@ public class Main {
 
         UserRepository userRepository = new UserRepository();
 
-        userRepository.save(user1);
-        userRepository.save(user2);
-        userRepository.save(user3);
-        userRepository.save(user4);
+//        userRepository.save(user1);
+//        userRepository.save(user2);
+//        userRepository.save(user3);
+//        userRepository.save(user4);
 
-        FileManagement userFile = new FileManagement("./csv/user.csv");
-        FileInterpreter<User> fiUser = new FileInterpreter<>();
-        UserFactory userFactory = new UserFactory();
+        Collection<User> users = userRepository.findAll();
+        Collection<Game> games = gameRepository.findAll();
 
-        Collection<User> users = userFactory.all(fiUser.interpret(userFile.read(), User.class));
-
-        users.forEach(System.out::println);
-
+        System.out.println(gameRepository.find(4L));
     }
 
 }

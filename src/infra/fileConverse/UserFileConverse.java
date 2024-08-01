@@ -1,13 +1,12 @@
-package infra.factory;
+package infra.fileConverse;
 
 import domain.User;
-import fileSystem.Factory;
+import fileSystem.FileConverse;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
-public class UserFactory implements Factory<User> {
+public class UserFileConverse implements FileConverse<User> {
 
 
     @Override

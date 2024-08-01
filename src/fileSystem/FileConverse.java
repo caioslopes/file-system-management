@@ -2,7 +2,7 @@ package fileSystem;
 
 import java.util.Collection;
 
-public interface Factory<T> {
+public interface FileConverse<T> {
 
     public T generate(String ...args);
 
